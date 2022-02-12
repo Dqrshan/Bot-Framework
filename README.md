@@ -1,6 +1,6 @@
 # Discord Bot Framework
 
-> _This template is originally forked from [gonzyui/Discord-Template-V13](https://github.com/gonzyui/Discord-Template-V13/)_ > _Make sure to check that out for the full version!_
+> _This template is originally forked from [gonzyui/Discord-Template-V13](https://github.com/gonzyui/Discord-Template-V13/). Make sure to check that out for the full version!_
 
 ## Introduction
 
@@ -18,7 +18,7 @@ This template offers more of **intellisense** or what we call in common words, *
 
 To install all of them, run the below script in your console:
 
-```js
+```bash
 npm install discord.js moment dotenv chalk @discordjs/rest discord-api-types
 ```
 
@@ -28,21 +28,21 @@ npm install discord.js moment dotenv chalk @discordjs/rest discord-api-types
 - Follow this command template always!
 
 ```js
-const Command = require("../../structures/Command")
+const Command = require("../../structures/Command");
 
 module.exports = class Test extends Command {
-  constructor(client){
-    super(client. {
-      name: "test",
-      description: "Test Cmd"
-    })
-  }
+	constructor(client) {
+		super(client, {
+			name: "test",
+			description: "Test Cmd",
+		});
+	}
 
-  async exec(message, args){
-    const pong = this.client.ws.ping;
-    message.reply(`Hi ${args}, ${pong}ms`)
-  }
-}
+	async exec(message, args) {
+		const pong = this.client.ws.ping;
+		message.reply(`Hi ${args}, ${pong}ms`);
+	}
+};
 ```
 
 ## Contribution
