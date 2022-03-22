@@ -53,7 +53,7 @@ I may or may not have made a few errors but all of you are free to **fork** this
 
 <table>
   <tr>
-    <td align="center"><a href="https://discord.com/users/838620835282812969"><img src="https://cdn.discordapp.com/avatars/838620835282812969/c0b6981060e40b82fcacf52f9c16c049.png" width="100px">
+    <td align="center"><a href="https://discord.com/users/838620835282812969"><img src="https://media.discordapp.net/attachments/926313179326332940/952484622745354240/245200298_4491192070947485_329361950020987053_n.jpg?width=530&height=663" width="100px">
     <br />
       <sub>
         <b>Lorenz#1337</b>
