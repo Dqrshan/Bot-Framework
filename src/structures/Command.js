@@ -77,7 +77,7 @@ class Command {
 	 * Run Function
 	 * @param {Message} message
 	 * @param {String[]} args
-	 * @returns {Promise<?Message>}
+	 * @returns {Promise<?Message|?Array<Message>>}
 	 * @abstract
 	 */
 	async exec(message, args) {

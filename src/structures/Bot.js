@@ -90,4 +90,4 @@ class Bot extends Client {
 	}
 }
 
-module.exports = { Bot };
+module.exports = Bot;

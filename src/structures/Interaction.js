@@ -61,7 +61,7 @@ class Interaction {
 	/**
 	 * Run Function
 	 * @param {Interaction} interaction
-	 * @returns {Promise<?Interaction>}
+	 * @returns {Promise<?Interaction|?Array<Interaction>}
 	 * @abstract
 	 */
 	async exec(interaction) {
