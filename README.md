@@ -1,65 +1,32 @@
-# Discord Bot Framework
+# Discord.js Bot Framework v14
 
-> _This template is originally forked from [gonzyui/Discord-Template-V13](https://github.com/gonzyui/Discord-Template-V13/). Make sure to check that out for the full version!_
-
----
-
-## ❓ Introduction
-
-This template offers more of **intellisense** or what we call in common words, **Auto Complete**. I made this template for all the beginners out there trying to make a Discord Bot. I have credited the main owner's repository so make sure to check that out before checking out this!
+A framework for creating Discord Bots in **typescript**!
 
 ---
 
-## 📝 Prerequisites
+## Instructions
 
--   [nodejs v16+](https://nodejs.org/)
--   [discord.js v13+](https://npmjs.com/package/discord.js)
--   [moment](https://npmjs.com/package/moment)
--   [dotenv](https://npmjs.com/package/dotenv)
--   [chalk](https://npmjs.com/package/chalk)
--   [@discordjs/rest](https://npmjs.com/package/@discordjs/rest)
--   [discord-api-types](https://npmjs.com/package/discord-api-types)
-
-To install all of them, run the below script in your console:
+### Prerequisite
 
 ```bash
-npm install discord.js moment dotenv chalk @discordjs/rest discord-api-types
+npm install
+```
+
+### Running the code
+
+```bash
+npm run watch
 ```
 
 ---
 
-## ✨ Almost Done!
-
--   Make sure to rename the `.env.example` to `.env` and fill it in.
--   Follow this command template always!
-
-```js
-const Command = require('../../structures/Command');
-
-module.exports = class Test extends Command {
-	constructor(client) {
-		super(client, {
-			name: 'test',
-			description: 'Test Cmd',
-		});
-	}
-
-	async exec(message, args) {
-		const pong = this.client.ws.ping;
-		message.reply(`Hi ${args}, ${pong}ms`);
-	}
-};
-```
-
----
-
-## 👍 Contribution
+## Contribution
 
 I may or may not have made a few errors but all of you are free to **fork** this repository and create a [pull request](https://github.com/Dqrshan/Bot-Framework/pulls)
 
 ---
 
-## 💝 Contact Me
+## Developer Contact
 
 <table>
   <tr>
@@ -69,13 +36,11 @@ I may or may not have made a few errors but all of you are free to **fork** this
         <b>@bruh.darshan</b>
       </sub>
     </a>
-    <td align="center"><a href="https://discord.com/users/838620835282812969"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="Lorenz#1337" width="100px">
+    <td align="center"><a href="https://discord.com/users/838620835282812969"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="Lorenz#8262" width="100px">
     <br />
       <sub>
-        <b>Lorenz#1337</b>
+        <b>Lorenz#8262</b>
       </sub>
     </a>
   </tr>
 </table>
-
----
