@@ -1,4 +1,4 @@
-# Discord.js Bot Framework v14
+# Discord.js v14 Bot Framework
 
 A framework for creating Discord Bots in **typescript**!
 
