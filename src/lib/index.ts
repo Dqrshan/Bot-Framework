@@ -1,7 +1,2 @@
-export { Bot } from './client';
-export {
-	Command,
-	registerApplicationCommands,
-	registerCommands,
-} from './command';
-export { loadListeners } from './listener';
+export { Command, loadCommands } from './command';
+export { build, doPermissionCheck } from './utils';

@@ -1,4 +1,9 @@
-import type { CommandInteraction, GuildMember, Message } from 'discord.js';
+import type {
+	ApplicationCommandData,
+	CommandInteraction,
+	GuildMember,
+	Message,
+} from 'discord.js';
 import type { Command } from './command';
 
 export async function doPermissionCheck(
@@ -14,4 +19,14 @@ export async function doPermissionCheck(
 	}
 
 	return false;
+}
+
+export function build(data: Command): ApplicationCommandData {
+	return {
+		name: data.name,
+		description: data.description ?? 'a random command',
+		defaultMemberPermissions: data.userPermissions ?? [],
+		options: data.options ?? [],
+		type: data.type,
+	};
 }

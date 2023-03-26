@@ -1,11 +1,6 @@
-import { ActivityType } from 'discord.js';
-import {
-	type Bot,
-	registerApplicationCommands,
-	registerCommands,
-} from '../lib';
+import { ActivityType, Client } from 'discord.js';
 
-export default async function run(client: Bot) {
+export default async function run(client: Client) {
 	client.user?.setPresence({
 		activities: [
 			{
@@ -20,7 +15,5 @@ export default async function run(client: Bot) {
 	client.console.info(
 		`Logged in as ${client.user?.tag} [${client.user?.id}]`
 	);
-	await registerCommands(client);
-	await registerApplicationCommands(client);
 	return;
 }
