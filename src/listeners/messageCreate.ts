@@ -16,6 +16,12 @@ export default async function run(msg: Message) {
 	if (!command) return;
 	if (!command.messageRun) return;
 	try {
+		if (command.ownerOnly && msg.author.id !== process.env.OWNER) {
+			msg.reply({
+				content: 'This command can only be used by the owners',
+			});
+			return;
+		}
 		const bool = await doPermissionCheck(command, msg);
 		if (!bool) return;
 		await command.messageRun(msg, args);

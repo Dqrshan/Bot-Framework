@@ -6,6 +6,12 @@ export default async function run(ctx: CommandInteraction) {
 	if (!command) return;
 
 	try {
+		if (command.ownerOnly && ctx.user.id !== process.env.OWNER) {
+			ctx.reply({
+				content: 'This command can only be used by the owners',
+			});
+			return;
+		}
 		const bool = await doPermissionCheck(command, ctx);
 		if (!bool) return;
 		if (ctx.isChatInputCommand()) {
