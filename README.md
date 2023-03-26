@@ -15,7 +15,7 @@ npm install
 ### Running the code
 
 ```bash
-npm run watch
+npm run watch:start
 ```
 
 ---
