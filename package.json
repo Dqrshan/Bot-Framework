@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node dist/index.js",
 		"build": "tsc",
-		"watch": "tsc-watch --onSuccess \"node ./dist/index.js\""
+		"watch:start": "tsc-watch --onSuccess \"node ./dist/index.js\""
 	},
 	"repository": {
 		"type": "git",
