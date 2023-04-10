@@ -1,5 +1,6 @@
+// TO - DO
+/*
 import type { Message } from 'discord.js';
-import { doPermissionCheck } from '../lib/utils';
 
 export default async function run(msg: Message) {
 	if (msg.author.bot || msg.author.system) return;
@@ -22,11 +23,9 @@ export default async function run(msg: Message) {
 			});
 			return;
 		}
-		const bool = await doPermissionCheck(command, msg);
-		if (!bool) return;
 		await command.messageRun(msg, args);
 	} catch (error) {
 		msg.reply('An error occurred');
 		msg.client.console.error(error);
 	}
-}
+} */
