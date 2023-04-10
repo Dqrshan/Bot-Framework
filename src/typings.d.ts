@@ -1,6 +1,6 @@
 import consola from 'consola';
 import type { Collection } from 'discord.js';
-import type { Command } from './lib';
+import type { Command } from './lib/command';
 
 export {};
 
@@ -8,8 +8,6 @@ declare global {
 	namespace NodeJS {
 		interface ProcessEnv {
 			DISCORD_TOKEN: string;
-			CLIENT_ID: string;
-			OWNER: string;
 		}
 	}
 }

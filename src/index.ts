@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { build, loadCommands } from './lib';
+import { loadCommands } from './lib/command';
 import { readdirSync } from 'fs';
 import {
 	ApplicationCommandData,
@@ -11,6 +11,7 @@ import {
 	Routes,
 } from 'discord.js';
 import consola from 'consola';
+import { clientId } from './config';
 
 config();
 
@@ -62,9 +63,9 @@ const registerApplicationCommands = async (client: Client) => {
 			const { default: command } = await import(
 				`./commands/${dir}/${file}`
 			);
-			if (!command || !command.type) continue;
+			if (!command || !command.applicationCommand) continue;
 
-			commands.push(build(command));
+			commands.push(command.applicationCommand.toJSON());
 		}
 	}
 
@@ -72,12 +73,9 @@ const registerApplicationCommands = async (client: Client) => {
 		process.env.DISCORD_TOKEN
 	);
 	try {
-		const data = await rest.put(
-			Routes.applicationCommands(process.env.CLIENT_ID),
-			{
-				body: commands,
-			}
-		);
+		const data = await rest.put(Routes.applicationCommands(clientId), {
+			body: commands,
+		});
 		client.console.info(
 			`Application Command Registry finishd with ${
 				(data as any).length
