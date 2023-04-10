@@ -1,5 +1,5 @@
 import type { Message } from 'discord.js';
-import type { Command } from '../../lib';
+import type { Command } from '../../lib/command';
 import { inspect } from 'util';
 
 const evalCommand: Command = {

@@ -11,9 +11,8 @@ export default async function run(client: Client) {
 		status: 'online',
 	});
 
+	const { tag, id } = client.user!;
 	client.console.info('Ready!');
-	client.console.info(
-		`Logged in as ${client.user?.tag} [${client.user?.id}]`
-	);
+	client.console.info(`Logged in as ${tag} [${id}]`);
 	return;
 }
