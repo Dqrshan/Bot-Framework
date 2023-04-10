@@ -4,11 +4,10 @@ import type {
 	ChatInputCommandInteraction,
 	UserContextMenuCommandInteraction,
 	MessageContextMenuCommandInteraction,
-	ApplicationCommandType,
 	PermissionResolvable,
-	ApplicationCommandOptionData,
 	Client,
 	SlashCommandBuilder,
+	ContextMenuCommandBuilder,
 } from 'discord.js';
 import { readdirSync } from 'fs';
 
@@ -20,7 +19,7 @@ export interface Command {
 	userPermissions?: PermissionResolvable;
 	category?: string;
 	cooldown?: number | 1000;
-	applicationCommand?: SlashCommandBuilder;
+	applicationCommand?: SlashCommandBuilder | ContextMenuCommandBuilder;
 	ownerOnly?: boolean | false;
 
 	messageRun?: (msg: Message, args?: string[]) => Promise<unknown>;
