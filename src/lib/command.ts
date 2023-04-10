@@ -8,6 +8,7 @@ import type {
 	PermissionResolvable,
 	ApplicationCommandOptionData,
 	Client,
+	SlashCommandBuilder,
 } from 'discord.js';
 import { readdirSync } from 'fs';
 
@@ -15,17 +16,11 @@ export interface Command {
 	name: string;
 	description?: string;
 	aliases?: string[];
-	type?:
-		| ApplicationCommandType.ChatInput
-		| ApplicationCommandType.Message
-		| ApplicationCommandType.User
-		| undefined;
 	clientPermissions?: PermissionResolvable;
 	userPermissions?: PermissionResolvable;
 	category?: string;
 	cooldown?: number | 1000;
-	nsfw?: boolean | false;
-	options?: ApplicationCommandOptionData[];
+	applicationCommand?: SlashCommandBuilder;
 	ownerOnly?: boolean | false;
 
 	messageRun?: (msg: Message, args?: string[]) => Promise<unknown>;
