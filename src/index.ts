@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { loadCommands } from './lib/command';
+import { loadCommands } from './lib/command.js';
 import { readdirSync } from 'fs';
 import {
 	ApplicationCommandData,
@@ -11,7 +11,7 @@ import {
 	Routes,
 } from 'discord.js';
 import consola from 'consola';
-import { clientId } from './config';
+import { clientId } from './config.js';
 
 config();
 
@@ -43,9 +43,10 @@ const loadEvents = async (client: Client) => {
 	for (const file of files) {
 		count += 1;
 		const { default: run } = await import(`./listeners/${file}`);
+		if (!run) continue;
 		const name = file.split('.')[0];
-
-		client.on(name, run);
+		if (name === 'ready') client.on(name, run.bind(null, client));
+		else client.on(name, run);
 	}
 	client.console.info(`Listening to ${count} events`);
 };
@@ -77,8 +78,8 @@ const registerApplicationCommands = async (client: Client) => {
 			body: commands,
 		});
 		client.console.info(
-			`Application Command Registry finishd with ${
-				(data as any).length
+			`Application Command Registry finished with ${
+				(data as any[]).length
 			} commands registered.`
 		);
 	} catch (error) {

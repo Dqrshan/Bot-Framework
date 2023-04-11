@@ -44,9 +44,10 @@ export async function loadCommands(client: Client) {
 			const { default: command } = await import(
 				`../commands/${dir}/${file}`
 			);
+			command.category = dir;
 			if (!command || !command.name) continue;
 			client.commands.set(command.name, command);
 		}
 	}
-	client.console.debug(`Registered ${client.commands.size} command(s)`);
+	client.console.info(`Registered ${client.commands.size} command(s)`);
 }

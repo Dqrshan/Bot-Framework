@@ -1,5 +1,5 @@
 import type { Message } from 'discord.js';
-import type { Command } from '../../lib/command';
+import type { Command } from '../../lib/command.js';
 import { inspect } from 'util';
 
 const evalCommand: Command = {
@@ -44,6 +44,7 @@ const Eval = async (
 	let success = true;
 	let result = null;
 
+	// @ts-ignore
 	const client = msg.client;
 
 	try {
