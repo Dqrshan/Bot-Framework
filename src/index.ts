@@ -11,7 +11,7 @@ import {
 	Routes,
 } from 'discord.js';
 import consola from 'consola';
-import { clientId } from './config.js';
+import { clientId, prefix } from './config.js';
 
 config();
 
@@ -32,7 +32,7 @@ const client = new Client({
 
 client.console = consola;
 client.commands = new Collection();
-client.prefix = '!';
+client.prefix = prefix;
 
 const loadEvents = async (client: Client) => {
 	client.console.log('Loading events..');
