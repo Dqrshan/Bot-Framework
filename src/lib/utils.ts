@@ -9,13 +9,3 @@ export const doPermissionCheck = (
 	if (member!.permissions.has(permission)) return true;
 	return false;
 };
-
-export const doClientPermissionCheck = (
-	channel: TextChannel,
-	member: GuildMember,
-	permission: PermissionResolvable
-) => {
-	if (channel.permissionsFor(member!).has(permission)) return true;
-	if (member!.permissions.has(permission)) return true;
-	return false;
-};

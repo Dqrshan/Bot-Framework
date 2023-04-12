@@ -1,6 +1,6 @@
 import { CommandInteraction, GuildMember, TextChannel } from 'discord.js';
 import { owners } from '../config';
-import { doClientPermissionCheck, doPermissionCheck } from '../lib/utils';
+import { doPermissionCheck } from '../lib/utils';
 
 export default async function run(interaction: CommandInteraction) {
 	if (!interaction.guild) return;
@@ -17,7 +17,7 @@ export default async function run(interaction: CommandInteraction) {
 
 	if (
 		command.clientPermissions &&
-		!doClientPermissionCheck(
+		!doPermissionCheck(
 			interaction.channel as TextChannel,
 			interaction.guild.members.me!,
 			command.clientPermissions

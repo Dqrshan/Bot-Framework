@@ -1,6 +1,6 @@
 import type { Message, TextChannel } from 'discord.js';
 import { owners } from '../config';
-import { doClientPermissionCheck, doPermissionCheck } from '../lib/utils';
+import { doPermissionCheck } from '../lib/utils';
 
 export default async function run(msg: Message) {
 	if (msg.author.bot || msg.author.system) return;
@@ -24,7 +24,7 @@ export default async function run(msg: Message) {
 			}
 			if (
 				command.clientPermissions &&
-				!doClientPermissionCheck(
+				!doPermissionCheck(
 					msg.channel as TextChannel,
 					msg.guild?.members.me!,
 					command.clientPermissions
