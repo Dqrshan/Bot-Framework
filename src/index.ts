@@ -87,8 +87,8 @@ const registerApplicationCommands = async (client: Client) => {
 	}
 };
 
-process.on('uncaughtException', () => console.error);
-process.on('unhandledRejection', () => console.error);
+process.on('uncaughtException', console.error);
+process.on('unhandledRejection', console.error);
 
 Promise.all([
 	loadEvents(client),
