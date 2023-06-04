@@ -1,7 +1,7 @@
 import type { Message } from 'discord.js';
-import type { Command } from '../../lib/command.js';
+import type { Command } from 'lib/command.js';
 import { inspect } from 'util';
-import { isThenable } from '../../lib/isThenable.js';
+import { isThenable } from 'lib/isThenable.js';
 
 const evalCommand: Command = {
     name: 'eval',

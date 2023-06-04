@@ -1,6 +1,6 @@
 import consola from 'consola';
 import type { Collection } from 'discord.js';
-import type { Command } from './lib/command.js';
+import type { Command } from 'lib/command';
 
 export {};
 

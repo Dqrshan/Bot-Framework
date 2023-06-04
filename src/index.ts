@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { loadCommands } from './lib/command.js';
+import { loadCommands } from 'lib/command';
 import { readdirSync } from 'fs';
 import {
     ApplicationCommandData,
@@ -11,7 +11,7 @@ import {
     Routes
 } from 'discord.js';
 import consola from 'consola';
-import { clientId, prefix } from './config.js';
+import { clientId, prefix } from 'config';
 import { rmSync } from 'fs';
 
 config();

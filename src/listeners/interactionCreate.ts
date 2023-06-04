@@ -1,6 +1,6 @@
 import { CommandInteraction, GuildMember, TextChannel } from 'discord.js';
-import { owners } from '../config';
-import { doPermissionCheck } from '../lib/utils';
+import { owners } from 'config';
+import { doPermissionCheck } from 'lib/utils';
 
 export default async function run(interaction: CommandInteraction) {
     if (!interaction.guild) return;
