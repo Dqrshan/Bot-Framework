@@ -5,17 +5,17 @@ import type { Command } from './lib/command.js';
 export {};
 
 declare global {
-	namespace NodeJS {
-		interface ProcessEnv {
-			DISCORD_TOKEN: string;
-		}
-	}
+    namespace NodeJS {
+        interface ProcessEnv {
+            DISCORD_TOKEN: string;
+        }
+    }
 }
 
 declare module 'discord.js' {
-	interface Client {
-		console: typeof consola;
-		commands: Collection<string, Command>;
-		prefix: string;
-	}
+    interface Client {
+        console: typeof consola;
+        commands: Collection<string, Command>;
+        prefix: string;
+    }
 }

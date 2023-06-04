@@ -2,19 +2,19 @@ import { CommandInteraction, Message, SlashCommandBuilder } from 'discord.js';
 import type { Command } from '../../lib/command.js';
 
 const ping: Command = {
-	name: 'ping',
-	description: 'Latency of the bot',
-	applicationCommand: new SlashCommandBuilder()
-		.setName('ping')
-		.setDescription('Latency of the bot'),
-	messageRun: async (msg: Message) => {
-		return msg.reply(`Ping! ${msg.client.ws.ping} ms`);
-	},
+    name: 'ping',
+    description: 'Latency of the bot',
+    applicationCommand: new SlashCommandBuilder()
+        .setName('ping')
+        .setDescription('Latency of the bot'),
+    messageRun: async (msg: Message) => {
+        return msg.reply(`Ping! ${msg.client.ws.ping} ms`);
+    },
 
-	chatInputRun: async (ctx: CommandInteraction) => {
-		ctx.reply(`Ping! ${ctx.client.ws.ping} ms`);
-		return;
-	},
+    chatInputRun: async (ctx: CommandInteraction) => {
+        ctx.reply(`Ping! ${ctx.client.ws.ping} ms`);
+        return;
+    }
 };
 
 export default ping;

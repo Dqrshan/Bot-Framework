@@ -1,39 +1,39 @@
-import type { Message } from "discord.js";
-import type { Command } from "../../lib/command.js";
-import { inspect } from "util";
-import { isThenable } from "../../lib/isThenable.js";
+import type { Message } from 'discord.js';
+import type { Command } from '../../lib/command.js';
+import { inspect } from 'util';
+import { isThenable } from '../../lib/isThenable.js';
 
 const evalCommand: Command = {
-    name: "eval",
-    description: "Evaluate a javascript code",
+    name: 'eval',
+    description: 'Evaluate a javascript code',
     ownerOnly: true,
     messageRun: async (msg: Message, args: string[] | undefined) => {
         if (!args || !args.length) {
             msg.reply({
-                content: "Please provide a code to eval!",
+                content: 'Please provide a code to eval!'
             });
             return;
         }
-        const code = args.join(" ");
+        const code = args.join(' ');
 
         const { result, success } = await Eval(msg, code, {
-            async: code.includes("await"),
-            depth: 2,
+            async: code.includes('await'),
+            depth: 2
         });
 
         const output = success
-            ? "```js\n" + result + "\n```"
-            : "**ERROR**:\n```bash\n" + result + "\n```";
+            ? '```js\n' + result + '\n```'
+            : '**ERROR**:\n```bash\n' + result + '\n```';
 
         if (output.length > 2000) {
             return msg.reply({
-                content: "Output was too long.. sent the result as a file",
-                files: [{ attachment: Buffer.from(output), name: "output.js" }],
+                content: 'Output was too long.. sent the result as a file',
+                files: [{ attachment: Buffer.from(output), name: 'output.js' }]
             });
         }
 
         return msg.reply({ content: output });
-    },
+    }
 };
 
 const Eval = async (
@@ -60,9 +60,9 @@ const Eval = async (
 
     if (isThenable(result)) result = await result;
 
-    if (typeof result !== "string") {
+    if (typeof result !== 'string') {
         result = inspect(result, {
-            depth: flags.depth,
+            depth: flags.depth
         });
     }
 
