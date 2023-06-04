@@ -12,6 +12,7 @@ import {
 } from 'discord.js';
 import consola from 'consola';
 import { clientId, prefix } from './config.js';
+import { rmSync } from 'fs';
 
 config();
 
@@ -87,11 +88,16 @@ const registerApplicationCommands = async (client: Client) => {
     }
 };
 
-process.on('uncaughtException', console.error);
-process.on('unhandledRejection', console.error);
-
 Promise.all([
     loadEvents(client),
     registerApplicationCommands(client),
     loadCommands(client)
 ]).then(() => client.login(process.env.DISCORD_TOKEN));
+
+process.on('uncaughtException', client.console.error);
+process.on('unhandledRejection', client.console.error);
+
+process.once('exit', () => {
+    client.destroy();
+    rmSync('dist/', { force: true, recursive: true });
+});
