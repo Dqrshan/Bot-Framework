@@ -1,8 +1,14 @@
-# Discord.js v14 Bot Framework
+# Discord.js Next Bot Framework
 
-A framework for creating Discord Bots in **typescript**!
+A framework for creating Discord Bots in **typescript** & [@discordjs/core](https://discord.js.org/)!
 
 ---
+
+## Note
+
+-   This is a framework to support the new upcoming **next** version of `discord.js`, also known as [@discordjs/core](https://discord.js.org).
+-   I recommend using the [v14](https://github.com/Dqrshan/Bot-Framework) version instead until the release of **discord.js next**.
+-   Contributions are always welcomed & appreciated!
 
 ## Instructions
 
