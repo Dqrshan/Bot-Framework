@@ -1,18 +1,13 @@
-import { ActivityType, Client } from 'discord.js';
+import { GatewayDispatchEvents } from '@discordjs/core';
+import { Listener } from '../lib/listener';
 
-export default async function run(client: Client) {
-    client.user?.setPresence({
-        activities: [
-            {
-                name: 'You',
-                type: ActivityType.Watching
-            }
-        ],
-        status: 'online'
-    });
+const event: Listener = {
+    name: 'ready',
+    event: GatewayDispatchEvents.Ready,
+    once: true,
+    run: async (client) => {
+        client.console.success('Ready!');
+    }
+};
 
-    const { tag, id } = client.user!;
-    client.console.info('Ready!');
-    client.console.info(`Logged in as ${tag} [${id}]`);
-    return;
-}
+export default event;

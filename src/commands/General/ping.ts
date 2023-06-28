@@ -1,5 +1,5 @@
-import { CommandInteraction, Message, SlashCommandBuilder } from 'discord.js';
-import type { Command } from 'lib/command';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import type { Command } from '../../lib/command';
 
 const ping: Command = {
     name: 'ping',
@@ -7,13 +7,11 @@ const ping: Command = {
     applicationCommand: new SlashCommandBuilder()
         .setName('ping')
         .setDescription('Latency of the bot'),
-    messageRun: async (msg: Message) => {
-        return msg.reply(`Ping! ${msg.client.ws.ping} ms`);
-    },
 
-    chatInputRun: async (ctx: CommandInteraction) => {
-        ctx.reply(`Ping! ${ctx.client.ws.ping} ms`);
-        return;
+    chatInputRun: async (ctx, api) => {
+        await api.interactions.reply(ctx.id, ctx.token, {
+            content: 'Pong!'
+        });
     }
 };
 

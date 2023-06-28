@@ -1,6 +1,7 @@
 import consola from 'consola';
-import type { Collection } from 'discord.js';
-import type { Command } from 'lib/command';
+// import type { Collection } from '@discordjs/collection';
+// import type { Command } from './lib/command';
+// import { Listener } from './lib/listener';
 
 export {};
 
@@ -12,10 +13,10 @@ declare global {
     }
 }
 
-declare module 'discord.js' {
+declare module '@discordjs/core' {
     interface Client {
         console: typeof consola;
-        commands: Collection<string, Command>;
-        prefix: string;
+        // commands: Collection<string, Command>;
+        // events: Collection<string, Listener>;
     }
 }

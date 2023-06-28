@@ -1,64 +1,46 @@
-import { CommandInteraction, GuildMember, TextChannel } from 'discord.js';
-import { owners } from 'config';
-import { doPermissionCheck } from 'lib/utils';
+import {
+    GatewayDispatchEvents,
+    InteractionType,
+    MessageFlags
+} from '@discordjs/core';
+import { Listener } from '../lib/listener';
+import { commands } from '../index';
 
-export default async function run(interaction: CommandInteraction) {
-    if (!interaction.guild) return;
-    const { commandName } = interaction;
-    const command = interaction.client.commands.get(commandName);
-    if (!command) return;
-    if (command.ownerOnly && !owners.includes(interaction.user.id)) {
-        interaction.reply({
-            content: 'This command can only be used by the owners',
-            ephemeral: true
-        });
-        return;
-    }
-
-    if (
-        command.clientPermissions &&
-        !doPermissionCheck(
-            interaction.channel as TextChannel,
-            interaction.guild.members.me!,
-            command.clientPermissions
-        )
-    ) {
-        interaction.reply({
-            content: `I'm missing the ${command.clientPermissions} permission`,
-            ephemeral: true
-        });
-        return;
-    }
-
-    if (
-        command.userPermissions &&
-        !doPermissionCheck(
-            interaction.channel as TextChannel,
-            (interaction.member as GuildMember)!,
-            command.userPermissions
-        )
-    ) {
-        interaction.reply({
-            content: `Missing ${command.userPermissions} Permission`,
-            ephemeral: true
-        });
-        return;
-    }
-    if (interaction.isChatInputCommand()) {
-        if (!command.chatInputRun) return;
-        try {
-            await command.chatInputRun(interaction);
-        } catch (error) {
-            interaction.client.console.error(error);
+const event: Listener = {
+    name: 'interactionCreate',
+    event: GatewayDispatchEvents.InteractionCreate,
+    once: false,
+    run: async ({ data: interaction, api }) => {
+        console.log(interaction);
+        if (interaction.type === InteractionType.ApplicationCommand) {
+            const command = commands.get(interaction.data.name);
+            if (!command) {
+                await api.interactions.reply(
+                    interaction.id,
+                    interaction.token,
+                    {
+                        content: 'Unknown command',
+                        flags: MessageFlags.Ephemeral
+                    }
+                );
+                return;
+            }
+            if (!command.chatInputRun) return;
+            try {
+                await command.chatInputRun(interaction, api);
+            } catch (error) {
+                console.error(error);
+                await api.interactions.reply(
+                    interaction.id,
+                    interaction.token,
+                    {
+                        content: `There was an error while executing this command!\n\`\`\`ts\n${error}\`\`\``,
+                        flags: MessageFlags.Ephemeral
+                    }
+                );
+            }
         }
     }
+};
 
-    if (interaction.isContextMenuCommand()) {
-        if (!command.contextMenuRun) return;
-        try {
-            await command.contextMenuRun(interaction);
-        } catch (error) {
-            interaction.client.console.error(error);
-        }
-    }
-}
+export default event;
