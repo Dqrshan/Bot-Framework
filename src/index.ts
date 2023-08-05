@@ -1,7 +1,8 @@
 import { config } from 'dotenv';
-import { loadCommands } from 'lib/command';
+import { loadCommands } from './lib/command';
 import { readdirSync } from 'fs';
 import {
+    ActivityType,
     ApplicationCommandData,
     Client,
     Collection,
@@ -11,7 +12,7 @@ import {
     Routes
 } from 'discord.js';
 import consola from 'consola';
-import { clientId, prefix } from 'config';
+import { clientId, prefix } from './config';
 import { rmSync } from 'fs';
 
 config();
@@ -28,7 +29,16 @@ const client = new Client({
         Partials.GuildMember,
         Partials.User,
         Partials.Message
-    ]
+    ],
+    presence: {
+        activities: [
+            {
+                name: `${prefix}help`,
+                type: ActivityType.Listening
+            }
+        ],
+        status: 'online'
+    }
 });
 
 client.console = consola;
