@@ -1,9 +1,9 @@
 import type { Message } from 'discord.js';
-import type { Command } from 'lib/command';
+import type { Command } from '../../lib/command';
+import { isThenable } from '../../lib/isThenable';
 import { inspect } from 'util';
-import { isThenable } from 'lib/isThenable';
 
-const evalCommand: Command = {
+const command: Command = {
     name: 'eval',
     description: 'Evaluate a javascript code',
     ownerOnly: true,
@@ -69,4 +69,4 @@ const Eval = async (
     return { result, success };
 };
 
-export default evalCommand;
+export default command;

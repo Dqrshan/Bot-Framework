@@ -1,6 +1,6 @@
 import type { Message, TextChannel } from 'discord.js';
-import { owners } from 'config';
-import { doPermissionCheck } from 'lib/utils';
+import { owners } from '../config';
+import { doPermissionCheck } from '../lib/utils';
 
 export default async function run(msg: Message) {
     if (msg.author.bot || msg.author.system) return;
