@@ -7,7 +7,7 @@ A framework for creating Discord Bots in **typescript**!
 ## Instructions
 
 ### Prerequisite
-
+- [Node.js]((https://nodejs.org/)) v16+
 ```bash
 npm install
 ```
@@ -28,6 +28,8 @@ I may or may not have made a few errors but you are free to **fork** this reposi
 
 ## Developer Contact
 
+https://darshan.studio/
+
 <table>
   <tr>
     <td align="center"><a href="https://instagram.com/bruh.darshan"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="bruh.darshan" width="100px">
@@ -39,7 +41,7 @@ I may or may not have made a few errors but you are free to **fork** this reposi
     <td align="center"><a href="https://discord.com/users/838620835282812969"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="Lorenz#8262" width="100px">
     <br />
       <sub>
-        <b>Lorenz</b>
+        <b>@l.orenz</b>
       </sub>
     </a>
   </tr>
