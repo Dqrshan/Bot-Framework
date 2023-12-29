@@ -3,7 +3,7 @@ import type { Command } from '../../lib/command';
 import { isThenable } from '../../lib/isThenable';
 import { inspect } from 'util';
 
-const command: Command = {
+export default <Command>{
     name: 'eval',
     description: 'Evaluate a javascript code',
     ownerOnly: true,
@@ -28,7 +28,7 @@ const command: Command = {
         if (output.length > 2000) {
             return msg.reply({
                 content: 'Output was too long.. sent the result as a file',
-                files: [{ attachment: Buffer.from(output), name: 'output.js' }]
+                files: [{ attachment: Buffer.from(result), name: 'output.js' }]
             });
         }
 
@@ -68,5 +68,3 @@ const Eval = async (
 
     return { result, success };
 };
-
-export default command;

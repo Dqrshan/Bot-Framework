@@ -1,7 +1,7 @@
 import { CommandInteraction, Message, SlashCommandBuilder } from 'discord.js';
 import type { Command } from '../../lib/command';
 
-const command: Command = {
+export default <Command>{
     name: 'ping',
     description: 'Latency of the bot',
     applicationCommand: new SlashCommandBuilder()
@@ -16,5 +16,3 @@ const command: Command = {
         return;
     }
 };
-
-export default command;
